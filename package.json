@@ -1,0 +1,10 @@
+{
+  "name": "fullstack-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fullstack Task Management Application",
+  "scripts": {
+    "frontend": "npm --prefix frontend run dev",
+    "backend": "npm --prefix backend run dev"
+  }
+}
