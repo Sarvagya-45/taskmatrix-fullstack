@@ -1,4 +1,4 @@
-import { CalendarDays, Check, Clock3, Edit3, Trash2 } from "lucide-react";
+import { CalendarDays, Check, Edit3, Trash2 } from "lucide-react";
 
 import api from "../../services/api.js";
 
@@ -9,7 +9,7 @@ const TaskCard = ({ task, onEdit, onDelete, onRefresh }) => {
 
   const handleStatusChange = async (status) => {
     try {
-      await api.put(`/tasks/${task._id}`, {
+      await api.put(`/api/tasks/${task._id}`, {
         status,
       });
 

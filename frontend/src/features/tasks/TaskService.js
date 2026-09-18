@@ -5,7 +5,7 @@ import api from "../../services/api.js";
 // ===============================
 
 export const getTasks = async () => {
-  const response = await api.get("/tasks");
+  const response = await api.get("/api/tasks");
 
   return response.data.data.tasks || [];
 };
@@ -15,7 +15,7 @@ export const getTasks = async () => {
 // ===============================
 
 export const getTaskById = async (taskId) => {
-  const response = await api.get(`/tasks/${taskId}`);
+  const response = await api.get(`/api/tasks/${taskId}`);
 
   return response.data.data.task;
 };
@@ -25,7 +25,7 @@ export const getTaskById = async (taskId) => {
 // ===============================
 
 export const createTask = async (taskData) => {
-  const response = await api.post("/tasks", taskData);
+  const response = await api.post("/api/tasks", taskData);
 
   return response.data.data.task;
 };
@@ -35,7 +35,7 @@ export const createTask = async (taskData) => {
 // ===============================
 
 export const updateTask = async (taskId, taskData) => {
-  const response = await api.put(`/tasks/${taskId}`, taskData);
+  const response = await api.put(`/api/tasks/${taskId}`, taskData);
 
   return response.data.data.task;
 };
@@ -45,7 +45,7 @@ export const updateTask = async (taskId, taskData) => {
 // ===============================
 
 export const deleteTask = async (taskId) => {
-  const response = await api.delete(`/tasks/${taskId}`);
+  const response = await api.delete(`/api/tasks/${taskId}`);
 
   return response.data;
 };
@@ -55,7 +55,7 @@ export const deleteTask = async (taskId) => {
 // ===============================
 
 export const updateTaskStatus = async (taskId, status) => {
-  const response = await api.put(`/tasks/${taskId}`, {
+  const response = await api.put(`/api/tasks/${taskId}`, {
     status,
   });
 

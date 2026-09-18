@@ -31,7 +31,7 @@ const Dashboard = () => {
       setLoading(true);
       setError("");
 
-      const response = await api.get("/tasks");
+      const response = await api.get("/api/tasks");
 
       setTasks(response.data.data.tasks || []);
     } catch (err) {
@@ -76,7 +76,7 @@ const Dashboard = () => {
 
   const handleComplete = async (task) => {
     try {
-      await api.put(`/tasks/${task._id}`, {
+      await api.put(`/api/tasks/${task._id}`, {
         status: task.status === "completed" ? "todo" : "completed",
       });
 

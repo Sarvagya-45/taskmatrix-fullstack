@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Plus, RefreshCw, Search, Trash2 } from "lucide-react";
+import { Plus, RefreshCw, Search } from "lucide-react";
 
 import api from "../services/api.js";
 import Loader from "../components/Loader.jsx";
@@ -33,7 +33,7 @@ const Tasks = () => {
       setLoading(true);
       setError("");
 
-      const response = await api.get("/tasks");
+      const response = await api.get("/api/tasks");
 
       setTasks(response.data.data.tasks || []);
     } catch (err) {
@@ -57,11 +57,11 @@ const Tasks = () => {
       setError("");
 
       if (editingTask) {
-        await api.put(`/tasks/${editingTask._id}`, formData);
+        await api.put(`/api/tasks/${editingTask._id}`, formData);
 
         setToast("Task updated successfully.");
       } else {
-        await api.post("/tasks", formData);
+        await api.post("/api/tasks", formData);
 
         setToast("Task created successfully.");
       }
@@ -97,7 +97,7 @@ const Tasks = () => {
     try {
       setError("");
 
-      await api.delete(`/tasks/${taskId}`);
+      await api.delete(`/api/tasks/${taskId}`);
 
       setToast("Task deleted successfully.");
 
@@ -202,11 +202,8 @@ const Tasks = () => {
           onChange={(event) => setStatusFilter(event.target.value)}
         >
           <option value="all">All statuses</option>
-
           <option value="todo">To Do</option>
-
           <option value="in-progress">In Progress</option>
-
           <option value="completed">Completed</option>
         </select>
 
@@ -215,11 +212,8 @@ const Tasks = () => {
           onChange={(event) => setPriorityFilter(event.target.value)}
         >
           <option value="all">All priorities</option>
-
           <option value="low">Low</option>
-
           <option value="medium">Medium</option>
-
           <option value="high">High</option>
         </select>
 
